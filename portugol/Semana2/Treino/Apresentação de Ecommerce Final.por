@@ -44,7 +44,9 @@ programa
 		leia(opcao)
 		slogao()
 		enquanto (opcao != 'n' e opcao != 'N' e opcao != 's' e opcao != 'S'){
-			escreva ("Opção inserida inválida, insira uma opção válida: ")
+			limpa()
+			slogao()
+			escreva ("Opção inserida inválida, insira uma opção válida:\n (s) Para entrar na loja \tou\t (n) Para sair ")
 			leia(opcao)
 			slogao()
 		}
@@ -190,8 +192,13 @@ programa
 	 	leia(formaDePagamento)
 	 	limpa()
 	 	enquanto (formaDePagamento != 1 e formaDePagamento != 2 e formaDePagamento != 3 ){
+	 		
 			escreva("Forma de pagamento inválida, insira uma opção válida: ")
+			escreva("Formas de Pagamento ")
+	 		escreva("\n1 - A VISTA COM 10% DESCONTO\n2 - NO CARTÃO COM ACRESCIMO DE 10%\n3- EM DUAS VEZES COM 15% TOTAL DE ACRESCIMENTO") 
+	 		escreva("\nEscolha sua forma de pagamento: ")
 			leia(formaDePagamento)
+			
 		}
 		 	
 		se (formaDePagamento == 1) {
@@ -243,7 +250,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5273; 
+ * @POSICAO-CURSOR = 5326; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
