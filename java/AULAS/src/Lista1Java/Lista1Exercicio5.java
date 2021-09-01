@@ -1,3 +1,4 @@
+package Lista1Java;
 import java.util.Scanner;
 public class Lista1Exercicio5 {
 	
