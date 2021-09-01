@@ -18,7 +18,7 @@ programa
 		logico fazerCompra = falso
 
 		produto[0] = "PRODUTO"
-		produto[1] = "LIVRO JAVA I."
+		produto[1] = "LIVRO JAVA I"
 		produto[2] = "LIVRO JAVA II"
 		produto[3] = "LIVRO HTML 5 I"
 		produto[4] = "LIVRO HTML II"
@@ -109,7 +109,7 @@ programa
 		escreva("\n")
 		
 		para(inteiro  l = 1; l <= 10; l++){
-			codigo[l] = "G1-"+l
+			codigo[l] = "G6-"+l
 			valor[l] = 100.00
 			estoque[l] = 10
 			escreva(codigo[l] + "\t | ")
@@ -124,7 +124,7 @@ programa
 		inteiro codigoProdutoDesejado
 		inteiro quantidadeDesejada
 		
-		escreva("\n\n Digite o código do produto desejado: ")
+		escreva("\n\n Digite o código do produto desejado (somente o número após o hífen): ")
 		leia(codigoProdutoDesejado)
 		enquanto (codigoProdutoDesejado != 1 e codigoProdutoDesejado != 2 e codigoProdutoDesejado != 3 e codigoProdutoDesejado != 4 e codigoProdutoDesejado != 5 e codigoProdutoDesejado != 6 e codigoProdutoDesejado != 7 e codigoProdutoDesejado != 8 e codigoProdutoDesejado != 9 e codigoProdutoDesejado != 10){
 			escreva("Código inválido, insira um código válido: ")
@@ -257,7 +257,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5290; 
+ * @POSICAO-CURSOR = 7780; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
