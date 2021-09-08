@@ -5,7 +5,7 @@ public class Lista3Exercicio6 {
 		Scanner leia = new Scanner(System.in);
 		
 		
-		int numero = 1, media = 0, contagem = 0;
+		double numero = 1, media = 0, contagem = 0;
 		
 		do {
 			System.out.println("Digite um valor :");
