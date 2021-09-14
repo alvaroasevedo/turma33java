@@ -1,10 +1,10 @@
 package entities;
 
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Produto {
-	
+
 	static final int VALORFIXO = 11;
 	protected String nomeLoja = "NANPPA ";
 	protected String slogan = "A Loja do dev desesperado!\n";
@@ -18,16 +18,16 @@ public class Produto {
 	protected double valorCompra[] = new double[VALORFIXO];
 	protected double valorTotalDaCompra = 0.00;
 	protected double precoPagar = 0.00;
-	
-	
-	
-	public  void cabecalho() {
+
+	public void cabecalho() {
 		String nomeLoja = "NANPPA", slogan = "A Loja do Dev desesperado!\n";
 
-		System.out.print("\n\n");
+		System.out.print("\n");
+		System.out.print("\n===============================================================================\n");
 		System.out.print(nomeLoja);
 		System.out.print("\n");
 		System.out.print(slogan);
+		System.out.print("===============================================================================\n");
 		System.out.print("\n");
 
 	}
@@ -130,7 +130,7 @@ public class Produto {
 		return VALORFIXO;
 	}
 
-	public  void mostraProduto() {
+	public void mostraProduto() {
 		String tituloMatriz[] = { "COD \t |", "PRODUTO \t\t |", "VALOR \t |", "ESTOQUE" };
 		produto[0] = "PRODUTO";
 		produto[1] = "LIVRO JAVA I.";
@@ -167,50 +167,59 @@ public class Produto {
 		}
 	}
 
-	public  void selecionaProduto() {
+	public void selecionaProduto() {
+		try {
+			Scanner scan = new Scanner(System.in);
 
-		Scanner scan = new Scanner(System.in);
-
-		System.out.print("\nDigite o código do produto desejado: G6-");
-		int codigoDoProdutoDesejado = scan.nextInt();
-		
-		
-		while(codigoDoProdutoDesejado <0 || codigoDoProdutoDesejado >10) {
-			
-			System.out.print("\n Código Inválido!! ");
 			System.out.print("\nDigite o código do produto desejado: G6-");
-			codigoDoProdutoDesejado = scan.nextInt();
-			
-		}
-		
-		System.out.print("Digite a quantidade necessária: ");
-		int quantidadeDesejada = scan.nextInt();
-		
-		while(quantidadeDesejada <0 || quantidadeDesejada >10) {
-			
-			System.out.print("\n Estoque Inválido!! ");
-			System.out.print("\nDigite a quantidade necessária:");
-			quantidadeDesejada = scan.nextInt();
-			
-		}
-		
-		
-		
-		for (int L = 0; L < 50; L++) {
+			int codigoDoProdutoDesejado = scan.nextInt();
+			// InputMismatchException
+			while (codigoDoProdutoDesejado < 0 || codigoDoProdutoDesejado > 10) {
 
-			System.out.println("\n");
-		}
-		for (int i = 0; i < VALORFIXO; i++) {
-			if (codigoDoProdutoDesejado == i) {
-				estoque[i] = estoque[i] - quantidadeDesejada;
-				quantidadeCarrinho[i] = quantidadeDesejada;
-				valorCompra[i] = valor[i] * quantidadeDesejada;
-				valorTotalDaCompra += valorCompra[i];
+				System.out.print("\n-------------------------------------------------------------------------------\n");
+				System.out.print("Código Inválido!! ");
+				System.out.print("\n-------------------------------------------------------------------------------\n");
+				System.out.print("\nDigite o código do produto desejado: G6-");
+				codigoDoProdutoDesejado = scan.nextInt();
+
 			}
+
+			System.out.print("Digite a quantidade necessária: ");
+			int quantidadeDesejada = scan.nextInt();
+
+			while (quantidadeDesejada < 0 || quantidadeDesejada > 10) {
+
+				System.out.print("\n-------------------------------------------------------------------------------\n");
+				System.out.print("Estoque inválido!! ");
+				System.out.print("\n-------------------------------------------------------------------------------\n");
+				System.out.print("\nDigite a quantidade necessária:");
+				quantidadeDesejada = scan.nextInt();
+
+			}
+
+			for (int L = 0; L < 50; L++) {
+
+				System.out.println("\n");
+			}
+			for (int i = 0; i < VALORFIXO; i++) {
+				if (codigoDoProdutoDesejado == i) {
+					estoque[i] = estoque[i] - quantidadeDesejada;
+					quantidadeCarrinho[i] = quantidadeDesejada;
+					valorCompra[i] = valor[i] * quantidadeDesejada;
+					valorTotalDaCompra += valorCompra[i];
+				}
+			}
+
+		} catch (InputMismatchException exception) {
+			System.out.print("\n===============================================================================\n");
+			System.out.print("Digite apenas um código presente na lista de produtos, por favor <3");
+			System.out.print("\n===============================================================================\n");
+			System.out.println("\n\n");
 		}
 	}
 
-	public  void mostraProdutoAtualizado() {
+	public void mostraProdutoAtualizado() {
+		cabecalho();
 		String tituloMatriz[] = { "COD \t |", "PRODUTO \t\t |", "VALOR \t |", "ESTOQUE" };
 		System.out.print(tituloMatriz[0]);
 		System.out.print(tituloMatriz[1]);
@@ -226,16 +235,18 @@ public class Produto {
 			System.out.print(estoque[l]);
 			System.out.print("\n");
 		}
+	
 		System.out.print("\n===============================================================================\n");
 		System.out.print("CARRINHO DE COMPRAS");
 		System.out.print("\n===============================================================================\n");
 		carrinho();
+		
 	}
 
-	public  void carrinho() {
-
+	public void carrinho() {
+		
+		
 		// System.out.println("\nCarrinho de Compras: \n");
-		cabecalho();
 		// System.out.println("\n");
 		System.out.print(tituloMatriz[0]);
 		System.out.print(tituloMatriz[1]);
@@ -256,45 +267,62 @@ public class Produto {
 	}
 
 	public void formaPagamento() {
-		Scanner scan = new Scanner(System.in);
+		// InputMismatchException
 		int quantidadeProduto = 0;
 		double desconto = 0.00;
+		char formaDePagamento;
+		// try {
+		Scanner scan = new Scanner(System.in);
+		do {
+			System.out.print("\n===============================================================================\n");
+			System.out.print("FORMAS DE PAGAMENTO");
+			System.out.print("\n===============================================================================\n");
+			System.out.print(
+					"\n1 - A VISTA COM 10% DESCONTO\n2 - NO CARTÃO COM ACRESCIMO DE 10%\n3 - EM DUAS VEZES COM 15% TOTAL DE ACRESCIMENTO");
 
-		System.out.print("\n===============================================================================\n");
-		System.out.print("FORMAS DE PAGAMENTO");
-		System.out.print("\n===============================================================================\n");
-		System.out.print(
-				"\n1 - A VISTA COM 10% DESCONTO\n2 - NO CARTÃO COM ACRESCIMO DE 10%\n3 - EM DUAS VEZES COM 15% TOTAL DE ACRESCIMENTO");
-		System.out.println("\n\nEscolha sua forma de pagamento:");
-		int formaDePagamento = scan.nextInt();
-		for (int L = 0; L < 50; L++) {
+			System.out.println("\n\nEscolha sua forma de pagamento:");
+			formaDePagamento = scan.next().charAt(0);
 
-			System.out.println("\n");
-		}
+			if (formaDePagamento == '1') {
+				desconto = (valorTotalDaCompra * 10) / 100;
+				precoPagar = (valorTotalDaCompra - desconto);
+				for (int L = 0; L < 50; L++) {
 
-		if (formaDePagamento == 1) {
-			desconto = (valorTotalDaCompra * 10) / 100;
-			precoPagar = (valorTotalDaCompra - desconto);
-			System.out.print("Você vai pagar: " + precoPagar);
-		} else if (formaDePagamento == 2) {
-			desconto = (valorTotalDaCompra * 10) / 100;
-			precoPagar = (valorTotalDaCompra + desconto);
-			System.out.print("Você vai pagar: " + precoPagar);
-		} else if (formaDePagamento == 3) {
-			desconto = (valorTotalDaCompra * 15) / 100;
-			precoPagar = (valorTotalDaCompra + desconto);
-			double parcela = (precoPagar / 2);
-			System.out.print("Você vai pagar: " + precoPagar + "\nSendo em duas parcelas iguais de: " + parcela);
-		}
+					System.out.println("\n");
+				}
+				System.out.print("Você vai pagar: " + precoPagar);
+				break;
+			} else if (formaDePagamento == '2') {
+				desconto = (valorTotalDaCompra * 10) / 100;
+				precoPagar = (valorTotalDaCompra + desconto);
+				for (int L = 0; L < 50; L++) {
+
+					System.out.println("\n");
+				}
+				System.out.print("Você vai pagar: " + precoPagar);
+				break;
+			} else if (formaDePagamento == '3') {
+				desconto = (valorTotalDaCompra * 15) / 100;
+				precoPagar = (valorTotalDaCompra + desconto);
+				double parcela = (precoPagar / 2);
+				for (int L = 0; L < 50; L++) {
+
+					System.out.println("\n");
+				}
+				System.out.print("Você vai pagar: " + precoPagar + "\nSendo em duas parcelas iguais de: " + parcela);
+				break;
+			}
+
+		} while (formaDePagamento != '1' || formaDePagamento != '2' || formaDePagamento != '3');
 	}
 
-	public  void notaFiscal() {
-		// cabecalho();
-		System.out.print("\n===============================================================================\n");
+	public void notaFiscal() {
+		cabecalho();
+		
+		System.out.print("===============================================================================\n");
 		System.out.print("NOTA FISCAL");
 		System.out.print("\n===============================================================================\n");
 		carrinho();
-		System.out.print("\n");
 		System.out.print("\n===============================================================================\n");
 		System.out.print("\nValor da compra: " + precoPagar + "\n\n");
 	}
