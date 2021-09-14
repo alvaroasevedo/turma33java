@@ -1,5 +1,4 @@
 package app;
-
 import java.util.Scanner;
 
 import entities.Produto;
@@ -8,7 +7,7 @@ public class TelaInicial {
 
 	public static void main(String[] args) {
 
-		Produto p1 = new Produto("nfndk", "nfjsgd");
+		Produto p1 = new Produto("NANPPA", "A Loja do dev desesperado!");
 
 		Scanner scan = new Scanner(System.in);
 		/*
@@ -87,11 +86,11 @@ public class TelaInicial {
 
 						System.out.println("\n");
 					}
-					
+
 					p1.formaPagamento();
 					p1.notaFiscal();
 					break;
-					
+
 				}
 			}
 		}
