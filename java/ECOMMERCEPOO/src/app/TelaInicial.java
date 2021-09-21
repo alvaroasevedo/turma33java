@@ -41,7 +41,7 @@ public class TelaInicial {
 				"\n============================================================================================================\n");
 		System.out.print("\nDESEJA FAZER COMPRAS ? (S/N) \n");
 
-		char op = 'n';
+		char op = 'p';
 		boolean fazerCompra = false;
 
 		op = scan.next().charAt(0);
