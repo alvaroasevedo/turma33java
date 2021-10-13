@@ -59,7 +59,5 @@ public class ProdutoController {
 		repository.deleteById(id);
 	}
 
-	/*
-	 * @PostMapping public String hello() { return "Hello World"; }
-	 */
+	
 }

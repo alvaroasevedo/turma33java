@@ -19,8 +19,8 @@ import com.generation.lojaGames.model.Categoria;
 import com.generation.lojaGames.repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/categoria")
 public class CategoriaController {
 
 	@Autowired
@@ -58,10 +58,5 @@ public class CategoriaController {
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-
-	//@PostMapping
-	//public String hello() {
-	//	return "Hello World";
-	//}
 
 }
